@@ -11,8 +11,8 @@ let arr3: Array<number | string> = [1, 2, 3, "4"];
 
 // 元组 tuple
 let tuple: [number, string] = [0, "123"];
-tuple.push(2)
-console.log(tuple)
+tuple.push(2);
+console.log(tuple);
 // tuple[2], //error
 
 // 函数
@@ -42,10 +42,41 @@ let x;
 
 // never
 let error = () => {
-  throw new Error('err');
-}
+  throw new Error("err");
+};
 
 let endless = () => {
-  while(true) {}
+  while (true) {}
+};
+
+// 枚举：一组有名字的常量集合
+
+// 数字枚举
+enum Role {
+  Reporter,
+  Developer,
+  Owner,
 }
 
+// 字符串枚举
+enum Msg {
+  Success = "成功",
+  Fail = "失败",
+}
+
+// 异构枚举, 不建议使用
+enum Answer {
+  N,
+  Y = 'Yes'
+}
+
+// 枚举成员
+enum Char {
+  // const
+  a,
+  b = Char.a,
+  c = 1 + 3,
+  // computed
+  d = Math.random(),
+  e = '123'.length
+}
