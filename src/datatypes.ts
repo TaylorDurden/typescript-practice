@@ -38,7 +38,7 @@ num = undefined;
 let noReturn = () => {};
 
 // any, 不建议使用
-let x;
+// let x;
 
 // never
 let error = () => {

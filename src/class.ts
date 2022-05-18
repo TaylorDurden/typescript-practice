@@ -1,10 +1,22 @@
-class Dog {
+abstract class Animal {
+  eat() {
+    console.log('eat');
+  }
+
+  // 无实现，在子类中实现
+  abstract sleep(): void;
+}
+
+class Dog extends Animal{
   constructor(name: string) {
+    super();
     this.name = name;
   }
   name: string;
   run() {}
-  static eat() {} // 只能通过类来访问 Dog.eat()
+  sleep(): void {
+    console.log('Dog sleeping zzz');
+  }
 }
 
 console.log(Dog.prototype);
@@ -22,3 +34,35 @@ class Kigi extends Dog {
   private shortLegRun() {};
 
 }
+
+class Cat extends Animal {
+  sleep() {
+    console.log('Cat sleeping zzzzz');
+  }
+}
+
+let cat = new Cat();
+
+let animals: Animal[] = [dog, cat];
+animals.forEach(a => {
+  a.sleep();
+})
+
+class Workflow {
+  step1() {
+    return this;
+  }
+  step2() {
+    return this;
+  }
+}
+
+new Workflow().step1().step2();
+
+class MyFlow extends Workflow {
+  next() {
+    return this;
+  }
+}
+
+new MyFlow().next().step1().next().step2();
